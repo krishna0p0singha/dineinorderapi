@@ -27,6 +27,7 @@ public class User {
     @Column(name = "user_phone_number")
     private int userPhoneNumber;
     @Column(name = "user_role")
+    @Enumerated(EnumType.STRING)
     private UserRole userRole;
     @Column(name = "create_at")
     private LocalDate createAt;

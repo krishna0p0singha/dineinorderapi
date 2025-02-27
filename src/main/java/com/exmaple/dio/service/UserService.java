@@ -4,4 +4,6 @@ import com.exmaple.dio.model.User;
 
 public interface UserService {
    User registerUser(User user);
+
+   User findById(long userId);
 }

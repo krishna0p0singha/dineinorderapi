@@ -2,6 +2,7 @@ package com.exmaple.dio.controller;
 
 import com.exmaple.dio.model.User;
 import com.exmaple.dio.service.UserService;
+import com.exmaple.dio.utility.ResponseBuilder;
 import com.exmaple.dio.utility.ResponseStructure;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -18,11 +19,9 @@ public class UserController {
     @PostMapping("/register")
     public ResponseEntity<ResponseStructure<User>> registerUser(@RequestBody User user){
         user = userService.registerUser(user);
-        ResponseStructure<User> structure = new ResponseStructure<>();
-        structure.setStatus(HttpStatus.CREATED.value());
-        structure.setMessage("User Created");
-        structure.setData(user);
-        return new ResponseEntity<ResponseStructure<User>>(structure,HttpStatus.CREATED);
+        return ResponseBuilder.success(HttpStatus.CREATED,"User Created", user);
+
     }
+
 
 }
