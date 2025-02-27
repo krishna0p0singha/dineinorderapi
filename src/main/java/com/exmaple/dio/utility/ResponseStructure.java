@@ -1,10 +1,12 @@
 package com.exmaple.dio.utility;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.http.HttpStatus;
 
 @Getter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class ResponseStructure <T>{
     private int status;
     private String message;
