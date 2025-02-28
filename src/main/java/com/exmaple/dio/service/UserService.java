@@ -6,4 +6,5 @@ public interface UserService {
    User registerUser(User user);
 
    User findById(long userId);
+   
 }

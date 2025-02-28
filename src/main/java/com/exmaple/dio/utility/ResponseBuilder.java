@@ -25,5 +25,15 @@ public class ResponseBuilder {
                 .headers(headers)
                 .body(structure);
     }
+    public static ResponseEntity<ErrorResponse> error(HttpStatus status, String message) {
+        ErrorResponse structure = ErrorResponse.builder()
+                .type(status.name())
+                .status(status.value())
+                .message(message)
+                .build();
+        return ResponseEntity.status(status)
+                .body(structure);
+    }
+
 
 }
