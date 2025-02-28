@@ -24,4 +24,10 @@ public class UserController {
     }
 
 
+    @GetMapping("/fetch-user/{userId}")
+    public ResponseEntity<ResponseStructure<User>> getUser(@PathVariable long userId) {
+        User user = userService.findById(userId);
+        return ResponseBuilder.success(HttpStatus.OK,"User Found", user);
+    }
+
 }

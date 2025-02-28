@@ -1,6 +1,7 @@
 package com.exmaple.dio.service.impl;
 
 import com.exmaple.dio.enums.UserRole;
+import com.exmaple.dio.exception.UserNotFoundByIdException;
 import com.exmaple.dio.model.Admin;
 import com.exmaple.dio.model.Staff;
 import com.exmaple.dio.model.User;
@@ -27,8 +28,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findById(long userId) {
-        Optional<User> user = userRepository.findById(userId);
-        return  user.get();
+       Optional<User> user =  userRepository.findById(userId);
+        return user.orElseThrow(()-> new UserNotFoundByIdException("User not Found By Id"));
     }
 
     private User createUserByRole(UserRole userRole) {
